@@ -7,7 +7,7 @@ var queryObject = require('urlquery-to-string')
 var querystring = 'one=1&two=2&three=3'
 console.log(queryObject(querystring))
 
-// {one: 1, two: 2, three: 3}
+// {one: '1', two: '2', three: '3'}
 
 ```
 
