@@ -13,7 +13,7 @@ module.exports = function urlQueryToObject (querystring) {
             return queryarr
         }, []).join('&')
     }
-    return querystring.split('&').reduce(function (prev, next) {
+    return '' === querystring? {}: querystring.split('&').reduce(function (prev, next) {
         var nextarr = next.split('=')
         var nextobj = {}
         nextobj[nextarr[0]] = nextarr[1]
