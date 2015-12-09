@@ -19,6 +19,15 @@ console.log(queryObject.queryString(queryobj))
 // 'one=1&two=2&three=3'
 ```
 
+If necessary, change or add key/value pairs:
+```
+var queryObject = require('urlquery-to-string')
+var queryobj = {one: '1', two: '2', three: '3'}
+console.log(queryObject.queryString(queryobj, {two:'II'}))
+
+// 'one=1&two=II&three=3'
+```
+
 ### install
 
 ```
