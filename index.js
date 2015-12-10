@@ -1,19 +1,28 @@
 var xtend = require('xtend')
 
 module.exports = function urlQueryToObject (querystring) {
-    querystring = querystring || ''
-    urlQueryToObject.queryString = function (queryobj, replacequery) {
-        queryobj = queryobj || {}
-        replacequery = replacequery || {}
-        Object.keys(replacequery).forEach(function (querykey) {
-            queryobj[querykey] = replacequery[querykey]
+    if (
+        undefined === querystring ||
+        'string' !== typeof querystring ||
+        -1 === querystring.indexOf('=')
+    ) { return {} }
+
+    urlQueryToObject.queryString = function (queryobj, replquery) {
+        if (
+            undefined === queryobj ||
+            !((!!queryobj) && (queryobj.constructor  === Object))
+        ) { return '' }
+        replquery = (!!replquery) && (replquery.constructor === Object)? replquery: {}
+        Object.keys(replquery).forEach(function (querykey) {
+            queryobj[querykey] = replquery[querykey]
         })
         return Object.keys(queryobj).reduce(function (queryarr, objkey) {
             queryarr.push(objkey + '=' + queryobj[objkey])
             return queryarr
         }, []).join('&')
     }
-    return '' === querystring? {}: querystring.split('&').reduce(function (prev, next) {
+
+    return querystring.split('&').reduce(function (prev, next) {
         var nextarr = next.split('=')
         var nextobj = {}
         nextobj[nextarr[0]] = nextarr[1]

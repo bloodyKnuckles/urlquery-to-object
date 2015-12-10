@@ -5,8 +5,8 @@ test('update query object, then to string', function (tt) {
     tt.plan(1)
 
     var queryobj = {one:'1', two:'2', three:'3'}
-    var result = 'one=1&two=II&three=3'
+    var result = 'one=1&two=II&three=3&four=4'
 
-    tt.deepEqual(queryObject.queryString(queryobj, {two:'II'}), result)
+    tt.deepEqual(queryObject.queryString(queryobj, {two:'II',four:'4'}), result)
 })
 
