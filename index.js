@@ -1,12 +1,6 @@
 var xtend = require('xtend')
 
 module.exports = function urlQueryToObject (querystring) {
-    if (
-        undefined === querystring ||
-        'string' !== typeof querystring ||
-        -1 === querystring.indexOf('=')
-    ) { return {} }
-
     urlQueryToObject.queryString = function (queryobj, replquery) {
         if (
             undefined === queryobj ||
@@ -21,6 +15,12 @@ module.exports = function urlQueryToObject (querystring) {
             return queryarr
         }, []).join('&')
     }
+
+    if (
+        undefined === querystring ||
+        'string' !== typeof querystring ||
+        -1 === querystring.indexOf('=')
+    ) { return {} }
 
     return querystring.split('&').reduce(function (prev, next) {
         var nextarr = next.split('=')
