@@ -8,7 +8,12 @@ module.exports = function urlQueryToObject (querystring) {
         ) { return '' }
         replquery = (!!replquery) && (replquery.constructor === Object)? replquery: {}
         Object.keys(replquery).forEach(function (querykey) {
-            queryobj[querykey] = replquery[querykey]
+            if ( undefined === replquery[querykey] ) {
+                delete queryobj[querykey]
+            }
+            else {
+                queryobj[querykey] = replquery[querykey]
+            }
         })
         return Object.keys(queryobj).reduce(function (queryarr, objkey) {
             queryarr.push(objkey + '=' + queryobj[objkey])
