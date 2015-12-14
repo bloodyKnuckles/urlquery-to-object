@@ -3,7 +3,7 @@
 Given a query string transform to a corresponding javascript object.
 
 ```
-var queryObject = require('urlquery-to-string')
+var queryObject = require('urlquery-to-object')
 var querystring = 'one=1&two=2&three=3'
 console.log(queryObject(querystring))
 
@@ -12,7 +12,7 @@ console.log(queryObject(querystring))
 
 Also, transform a query object into a query string:
 ```
-var queryObject = require('urlquery-to-string')
+var queryObject = require('urlquery-to-object')
 var queryobj = {one: '1', two: '2', three: '3'}
 console.log(queryObject.queryString(queryobj))
 
@@ -21,7 +21,7 @@ console.log(queryObject.queryString(queryobj))
 
 If necessary, change or add key/value pairs:
 ```
-var queryObject = require('urlquery-to-string')
+var queryObject = require('urlquery-to-object')
 var queryobj = {one: '1', two: '2', three: '3'}
 console.log(queryObject.queryString(queryobj, {two:'II', three:undefined, four:'4'}))
 
@@ -31,7 +31,7 @@ console.log(queryObject.queryString(queryobj, {two:'II', three:undefined, four:'
 ### install
 
 ```
-npm install urlquery-to-string
+npm install urlquery-to-object
 ```
 
 ### license
