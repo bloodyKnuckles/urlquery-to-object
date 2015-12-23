@@ -19,13 +19,22 @@ console.log(queryObject.queryString(queryobj))
 // 'one=1&two=2&three=3'
 ```
 
-If necessary, change or add key/value pairs:
+If needed, change or add key/value pairs:
 ```
 var queryObject = require('urlquery-to-object')
 var queryobj = {one: '1', two: '2', three: '3'}
 console.log(queryObject.queryString(queryobj, {two:'II', three:undefined, four:'4'}))
 
 // 'one=1&two=II&four=4'
+```
+
+And convert array values:
+```
+var queryObject = require('urlquery-to-object')
+var queryobj = {one: '1', two: '2', three: '3'}
+console.log(queryObject.queryString(queryobj, {four:['4','eight']}))
+
+// 'one=1&two=2&three=3&four=4&four=eight'
 ```
 
 ### install
