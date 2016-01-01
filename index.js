@@ -31,7 +31,7 @@ module.exports = function urlQueryToObject (querystring) {
   if (
     undefined === querystring ||
     'string' !== typeof querystring ||
-    -1 === querystring.indexOf('=')
+    querystring.match(/^\s*$/)
   ) { return {} }
 
   return querystring.split('&').reduce(function (prev, next) {
