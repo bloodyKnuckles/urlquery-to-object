@@ -1,6 +1,6 @@
 {
   "name": "urlquery-to-object",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Transform a URL query string to a corresponding javascript object.",
   "main": "index.js",
   "scripts": {
