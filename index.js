@@ -2,10 +2,12 @@ var xtend = require('xtend')
 
 module.exports = function urlQueryToObject (querystring) {
   urlQueryToObject.queryString = function (queryobj, replquery) {
-    if (
-      undefined === queryobj ||
-        !((!!queryobj) && (queryobj.constructor  === Object))
+
+    if ( (undefined === queryobj ||
+        !((!!queryobj) && (queryobj.constructor  === Object))) &&
+        (undefined === replquery || {} === replquery)
     ) { return '' }
+
     replquery = (!!replquery) && (replquery.constructor === Object)? replquery: {}
     Object.keys(replquery).forEach(function (querykey) {
       if ( undefined === replquery[querykey] ) {
@@ -15,8 +17,12 @@ module.exports = function urlQueryToObject (querystring) {
         queryobj[querykey] = replquery[querykey]
       }
     })
+
     return Object.keys(queryobj).reduce(function (queryarr, objkey) {
-      if ( 'string' === typeof queryobj[objkey] ) {
+      if ( 'string' === typeof queryobj[objkey] ||
+        'number' === typeof queryobj[objkey] ||
+        'boolean' === typeof queryobj[objkey]
+      ) {
         queryarr.push(objkey + '=' + queryobj[objkey])
       }
       else if ( Array.isArray(queryobj[objkey]) ) {
