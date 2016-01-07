@@ -5,7 +5,7 @@ test('url query string to object', function (tt) {
     tt.plan(4)
 
     var querystring = 'one=1&two=2&three=3&four'
-    var result = {one: '1', two: '2', three: '3', four: undefined}
+    var result = {one: 1, two: 2, three: 3, four: undefined}
 
     tt.deepEqual(queryObject(querystring), result)
     tt.deepEqual(queryObject(), {})

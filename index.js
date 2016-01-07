@@ -1,4 +1,5 @@
 var xtend = require('xtend')
+var typeDetectConvert = require('string-to-type')
 
 module.exports = function urlQueryToObject (querystring) {
   urlQueryToObject.queryString = function (queryobj, replquery) {
@@ -43,7 +44,7 @@ module.exports = function urlQueryToObject (querystring) {
   return querystring.split('&').reduce(function (prev, next) {
     var nextarr = next.split('=')
     var nextobj = {}
-    nextobj[nextarr[0]] = nextarr[1]
+    nextobj[nextarr[0]] = typeDetectConvert(nextarr[1])
     return xtend(prev, nextobj)
   }, {})
 }

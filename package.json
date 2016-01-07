@@ -25,6 +25,7 @@
     "tape": "^4.2.2"
   },
   "dependencies": {
+    "string-to-type": "^0.1.0",
     "xtend": "^4.0.1"
   }
 }
